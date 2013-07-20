@@ -2,14 +2,12 @@
 
 import webapp2
 from google.appengine.ext.webapp.util import run_wsgi_app
+from frases import *
 
-class FraseDoDia(webapp2.RequestHandler):
-	def get(self):
-		self.response.headers['Content-Type'] = 'text/json'
-		self.response.out.write('{"frase": "Uma frase qualquer"}')
 
 mapeamento = [
-	('/', FraseDoDia)
+	('/', FraseDoDia),
+	('/random', FraseAleatoriaDoDia)
 ]
 
 app = webapp2.WSGIApplication(mapeamento)
